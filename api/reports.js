@@ -1,3 +1,53 @@
+const reports = {
+    currentReport: [],
+    previousLocations: [],
+    damagesReport: [],
+    availableElHeste: Array.from({ length: 256 }, (_, i) => ({ elHest: i + 1, locationType: 'warehouse', vogn: null, brand: null })),
+};
+
+const parseRequestBody = async (req) => {
+    return new Promise((resolve, reject) => {
+        let body = '';
+        req.on('data', chunk => {
+            body += chunk.toString();
+        });
+        req.on('end', () => {
+            try {
+                resolve(body ? JSON.parse(body) : {});
+            } catch (error) {
+                reject(error);
+            }
+        });
+        req.on('error', error => {
+            reject(error);
+        });
+    });
+};
+
+module.exports = async (req, res) => {
+    try {
+        console.log(`Incoming request: ${req.method} ${req.url}`);
+
+        if (req.method === 'GET') {
+            return res.status(200).json(reports);
+        }
+
+        if (req.method === 'POST') {
+            const body = await parseRequestBody(req);
+            const { type, data } = body;
+
+            switch (type) {
+                case 'register':
+                    handleRegister(data);
+                    break;
+                case 'damage':
+                    handleDamage(data);
+                    break;
+                default:
+                    return res.status(400).send('Invalid request type');
+            }
+
+            return res.status(200).json(reports);  // Always return the updated reports
         }
 
         return res.status(405).send('Method Not Allowed');
