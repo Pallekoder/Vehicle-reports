@@ -1,3 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El-Hest Tracking App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="logo">JH Transport og Logistik</div>
+    <h1>Registrer El-Hest og Skader</h1>
+
+    <div id="main-container">
+        <div class="column" id="form">
+            <h2>Register El-Hest</h2>
+            <label for="locationType">Select Location Type:</label>
+            <select id="locationType" name="locationType" onchange="toggleLocationOptions()">
+                <option value="">--Select Location Type--</option>
+                <option value="vogn">Vogn</option>
+                <option value="warehouse">Warehouse</option>
+            </select>
+            <div id="vognOptionsContainer" class="hidden">
+                <label for="vogn">Select Vogn (1 to 256):</label>
+                <select id="vogn" name="vogn"></select>
+            </div>
+            <label for="elHest">Select El-Hest:</label>
+            <select id="elHest" name="elHest"></select>
+            <label for="elHestBrand">Select Brand:</label>
+            <select id="elHestBrand" name="elHestBrand">
+                <option value="">--Select Brand--</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Linde (NC Nielsen)">Linde (NC Nielsen)</option>
+            </select>
+            <button type="button" onclick="registerElHest()">Register</button>
+        </div>
+        <div class="column" id="damageForm">
+            <h2>Register Damage</h2>
             <label for="damageType">Select Type:</label>
             <select id="damageType" name="damageType" onchange="toggleDamageSelectors()">
                 <option value="">--Select Type--</option>
