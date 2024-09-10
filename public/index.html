@@ -1,0 +1,98 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El-Hest Tracking App</title>
+    <link rel="stylesheet" href="/public/style.css">
+    <script src="/public/script.js" defer></script>
+</head>
+<body>
+    <div id="logo">JH Transport og Logistik</div>
+    <h1>Registrer El-Hest og Skader</h1>
+    
+    <div id="main-container">
+        <div class="column" id="form">
+            <h2>Register El-Hest</h2>
+            <label for="locationType">Select Location Type:</label>
+            <select id="locationType" name="locationType" onchange="toggleLocationOptions()">
+                <option value="">--Select Location Type--</option>
+                <option value="vogn">Vogn</option>
+                <option value="warehouse">Warehouse</option>
+            </select>
+            <div id="vognOptionsContainer" class="hidden">
+                <label for="vogn">Select Vogn (1 to 256):</label>
+                <select id="vogn" name="vogn">
+                    <option value="">--Select Vogn--</option>
+                    <!-- Generate options dynamically with JS -->
+                </select>
+            </div>
+            <label for="elHest">Select El-Hest:</label>
+            <select id="elHest" name="elHest">
+                <option value="">--Select El-Hest--</option>
+                <!-- Generate options dynamically with JS -->
+            </select>
+            <button onclick="registerElHest()">Register</button>
+        </div>
+        <div class="column" id="damageForm">
+            <h2>Register Damage</h2>
+            <label for="damageType">Select Type:</label>
+            <select id="damageType" name="damageType" onchange="toggleDamageSelectors()">
+                <option value="">--Select Type--</option>
+                <option value="vogn">Vogn</option>
+                <option value="elHest">El-Hest</option>
+            </select>
+            <div id="damageVehicleContainer" class="hidden">
+                <label for="damageVehicle">Select Vogn (1 to 256):</label>
+                <select id="damageVehicle" name="damageVehicle">
+                    <option value="">--Select Vogn--</option>
+                    <!-- Generate options dynamically with JS -->
+                </select>
+            </div>
+            <div id="damageElHestContainer" class="hidden">
+                <label for="damageElHest">Select El-Hest:</label>
+                <select id="damageElHest" name="damageElHest">
+                    <option value="">--Select El-Hest--</option>
+                    <!-- Generate options dynamically with JS -->
+                </select>
+                <label for="elHestBrand">Select Brand:</label>
+                <select id="elHestBrand" name="elHestBrand">
+                    <option value="">--Select Brand--</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Linde (NC Nielsen)">Linde (NC Nielsen)</option>
+                </select>
+            </div>
+            <label for="damageDescription">Damage Description:</label>
+            <textarea id="damageDescription" name="damageDescription"></textarea>
+            <label for="reporterName">Your Name:</label>
+            <input type="text" id="reporterName" name="reporterName">
+            <button onclick="registerDamage()">Register Damage</button>
+        </div>
+    </div>
+    <button id="access-report-btn" onclick="showAuth()">Access Report</button>
+    <div id="auth" class="hidden">
+        <h2>Access Report</h2>
+        <label for="password">Enter password:</label>
+        <input type="password" id="password" name="password">
+        <button onclick="authenticate()">Submit</button>
+    </div>
+    <div id="report" class="hidden">
+        <div id="current">
+            <h2 onclick="toggleSection('currentReportContainer')">Current Report</h2>
+            <div id="currentReportContainer" class="hidden">
+                <pre id="currentReport"></pre>
+            </div>
+            <h2 onclick="toggleSection('previousLocationsContainer')">Previous Locations</h2>
+            <div id="previousLocationsContainer" class="hidden">
+                <pre id="previousLocations"></pre>
+            </div>
+            <h2 onclick="toggleSection('damagesContainer')">Damages</h2>
+            <div id="damagesContainer" class="hidden">
+                <pre id="damagesReport"></pre>
+            </div>
+        </div>
+        <div id="weeklyReports"></div>
+    </div>
+</body>
+</html>
