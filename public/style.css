@@ -1,0 +1,108 @@
+/* public/style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #f5f5f5;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+}
+
+h1, h2 {
+    color: #00BCD4;
+}
+
+#logo {
+    font-size: 1.5em;
+    margin-top: 20px;
+    color: #00BCD4;
+}
+
+h1 {
+    margin-top: 10px;
+}
+
+#main-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 1200px;
+    background-color: #1E1E1E;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.column {
+    width: 45%;
+}
+
+button {
+    background-color: #00BCD4;
+    color: #121212;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0097A7;
+}
+
+#auth, .report-week {
+    margin-top: 40px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    color: #B0BEC5;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #616161;
+    border-radius: 5px;
+    background-color: #424242;
+    color: #f5f5f5;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+}
+
+pre {
+    background-color: #2C2C2C;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    color: #B0BEC5;
+}
+
+.hidden {
+    display: none;
+}
+
+h2 {
+    cursor: pointer;
+}
+
+#access-report-btn {
+    margin-top: 20px;
+    background-color: #00BCD4;
+    color: #121212;
+}
